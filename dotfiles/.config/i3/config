@@ -11,16 +11,16 @@ set $defaultFont Share Tech Mono 9
 
 # ------------------------------------------- STARTUP COMMANDS
 # exec --no-startup-id i3lock-fancy
-exec --no-startup-id feh --bg-scale --randomize ~/Pictures/Wallpapers 
-exec --no-startup-id nm-applet # Network Manager
+exec --no-startup-id feh --bg-scale --randomize ~/.wallpapers 
 exec --no-startup-id xss-lock --transfer-sleep-lock -- lock
 exec --no-startup-id setxkbmap -model pc104 -layout us,ar -option grp:win_space_toggle
+exec --no-startup-id nm-applet
+exec --no-startup-id pasystray
 # ------------------------------------------------------------
 
 # -------------------------------------- SYSTEM CONFIGURATIONS
 font pango: $defaultFont
 floating_modifier $win
-default_border pixel 1
 workspace_auto_back_and_forth no
 gaps inner 5
 # ------------------------------------------------------------
@@ -42,7 +42,7 @@ bindsym $win+l exec i3lock-fancy
 
 bindsym Shift+F5 restart
 bindsym Shift+F6 exec code ~/.config
-bindsym Shift+F10 exec feh --bg-scale --randomize ~/.config/wallpapers
+bindsym Shift+F10 exec feh --bg-scale --randomize ~/.wallpapers
 bindsym Shift+F11 exec light -U 5
 bindsym Shift+F12 exec light -A 5
 # ------------------------------------------------------------
