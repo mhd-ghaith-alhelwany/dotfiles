@@ -1,0 +1,164 @@
+# -------------------------------------------------- KEYS
+set $win Mod4
+set $alt Mod1
+set $shift Shift
+# ------------------------------------------------------------
+
+# -------------------------------------------------- VARIABLES
+set $refresh_i3status killall -SIGUSR1 i3status
+set $defaultFont Share Tech Mono 9
+# ------------------------------------------------------------
+
+# ------------------------------------------- STARTUP COMMANDS
+# exec --no-startup-id i3lock-fancy
+exec --no-startup-id feh --bg-scale --randomize ~/Pictures/Wallpapers 
+exec --no-startup-id nm-applet # Network Manager
+exec --no-startup-id xss-lock --transfer-sleep-lock -- lock
+exec --no-startup-id setxkbmap -model pc104 -layout us,ar -option grp:win_space_toggle
+# ------------------------------------------------------------
+
+# -------------------------------------- SYSTEM CONFIGURATIONS
+font pango: $defaultFont
+floating_modifier $win
+default_border pixel 1
+workspace_auto_back_and_forth no
+gaps inner 5
+# ------------------------------------------------------------
+
+# ----------------------------------------- SYSTEM KEYBINDINGS
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -q -D pulse set Master 5%+ unmute && pkill -RTMIN+10 i3blocks
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q -D pulse set Master 5%- unmute && pkill -RTMIN+10 i3blocks
+bindsym XF86AudioMute exec --no-startup-id amixer -q -D pulse set Master toggle  
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+bindsym XF86MonBrightnessUp exec light -A 5
+bindsym XF86MonBrightnessDown exec light -U 5
+# ------------------------------------------------------------
+
+# ------------------------------------------------ KEYBINDINGS
+bindsym $alt+F4 kill
+bindsym $win+Shift+Return exec kitty
+bindsym $win+Return exec rofi -show run 
+bindsym $win+l exec i3lock-fancy
+
+bindsym Shift+F5 restart
+bindsym Shift+F6 exec code ~/.config
+bindsym Shift+F10 exec feh --bg-scale --randomize ~/.config/wallpapers
+bindsym Shift+F11 exec light -U 5
+bindsym Shift+F12 exec light -A 5
+# ------------------------------------------------------------
+
+# ---------------------------------------------------- WINDOWS
+bindsym $win+Left focus left
+bindsym $win+Down focus down
+bindsym $win+Up focus up
+bindsym $win+Right focus right
+bindsym $win+Shift+Left move left
+bindsym $win+Shift+Down move down
+bindsym $win+Shift+Up move up
+bindsym $win+Shift+Right move right
+
+bindsym $win+h split h
+bindsym $win+v split v
+bindsym $win+t layout tabbed
+bindsym $win+s layout stacking
+bindsym $win+e layout toggle split
+bindsym $win+f fullscreen toggle
+# ------------------------------------------------------------
+
+# ------------------------------------------------- WORKSPACES
+
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+
+bindsym $win+1 workspace $ws1
+bindsym $win+2 workspace $ws2
+bindsym $win+3 workspace $ws3
+bindsym $win+4 workspace $ws4
+bindsym $win+5 workspace $ws5
+bindsym $win+6 workspace $ws6
+bindsym $win+7 workspace $ws7
+bindsym $win+8 workspace $ws8
+bindsym $win+9 workspace $ws9
+
+bindsym $win+Shift+1 move container to workspace $ws1
+bindsym $win+Shift+2 move container to workspace $ws2
+bindsym $win+Shift+3 move container to workspace $ws3
+bindsym $win+Shift+4 move container to workspace $ws4
+bindsym $win+Shift+5 move container to workspace $ws5
+bindsym $win+Shift+6 move container to workspace $ws6
+bindsym $win+Shift+7 move container to workspace $ws7
+bindsym $win+Shift+8 move container to workspace $ws8
+bindsym $win+Shift+9 move container to workspace $ws9
+
+# ------------------------------------------------------------
+
+# --------------------------------------------- WORKSPACE KEYS
+bindsym $win+Tab workspace prev 
+bindsym $alt+Tab workspace next
+bindsym $win+Shift+Tab move container to workspace prev
+bindsym $alt+Shift+Tab move container to workspace next
+
+# bindsym $win+n exec newworkspace
+# bindsym $win+Shift+n exec movetonewworkspace
+# bindsym $alt+Shift+n exec movetonewworkspace change
+# ------------------------------------------------------------
+        
+set $COLOR___lightBG #607d8b
+set $COLOR__mediumBG #455a64
+set $COLOR____darkBG #263238
+set $COLOR__lightTXT #eceff1
+set $COLOR_mediumTXT #b0bec5
+set $COLOR___darkTXT #78909c
+
+# --------------------------------------------- CLIENT COLORS
+#                       background       border           text             indicator 
+client.focused          $COLOR__mediumBG $COLOR__mediumBG $COLOR__lightTXT $COLOR___lightBG
+client.unfocused        $COLOR____darkBG $COLOR____darkBG $COLOR__lightTXT $COLOR___lightBG
+client.focused_inactive $COLOR____darkBG $COLOR____darkBG $COLOR__lightTXT $COLOR___lightBG
+client.urgent           $COLOR____darkBG $COLOR____darkBG $COLOR__lightTXT $COLOR___lightBG
+# ------------------------------------------------------------
+
+
+# ----------------------------------------- BAR CONFIGURATIONS
+bar {
+        status_command i3blocks -c ~/.config/i3/i3blocks.conf
+        # status_command i3status
+	colors {
+		background $COLOR____darkBG
+	    	separator #ffffff
+		#                  border           background       text
+		focused_workspace  $COLOR__mediumBG $COLOR__mediumBG $COLOR__lightTXT
+		inactive_workspace $COLOR____darkBG $COLOR____darkBG $COLOR__mediumTXT
+		urgent_workspace   $COLOR____darkBG $COLOR____darkBG $COLOR__mediumTXT
+	}
+}
+# ------------------------------------------------------------
+
+
+# ------------------------------------------------------ MODES
+# 1- Resize
+bindsym $win+r mode "resize"
+mode "resize" {
+        set $resizeBy 1
+        bindsym Left resize shrink width $resizeBy px or $resizeBy ppt
+        bindsym Down resize grow height  $resizeBy px or $resizeBy ppt
+        bindsym Up resize shrink height  $resizeBy px or $resizeBy ppt
+        bindsym Right resize grow width  $resizeBy px or $resizeBy ppt
+        bindsym Escape mode "default"
+}
+# 2- Exit (L)ogout, (R)eboot, (P)oweroff
+bindsym $win+$shift+e mode "Exit (L)ogout, (R)eboot, (P)oweroff"
+mode "Exit (L)ogout, (R)eboot, (P)oweroff" {
+        bindsym $win+r exec systemctl reboot
+        bindsym $win+l exit
+        bindsym $win+p exec systemctl poweroff
+        bindsym Escape mode "default"
+}
+# ------------------------------------------------------------
