@@ -1,4 +1,4 @@
-apt_packages=( gnome-terminal ubuntu-gnome-desktop nautilus )
+apt_packages=( gnome-terminal ubuntu-gnome-desktop nautilus gdm )
 for i in "${apt_packages[@]}"
 do
     if [[ ! $(command dpkg -l | grep $i) ]]; then
