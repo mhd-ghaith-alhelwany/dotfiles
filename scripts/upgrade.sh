@@ -1,1 +1,2 @@
-sudo apt-get upgrade
+echo "upgrading packages"
+sudo apt-get upgrade > /dev/null

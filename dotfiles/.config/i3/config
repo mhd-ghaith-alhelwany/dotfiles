@@ -10,19 +10,21 @@ set $defaultFont Share Tech Mono 9
 # ------------------------------------------------------------
 
 # ------------------------------------------- STARTUP COMMANDS
-# exec --no-startup-id i3lock-fancy
+exec --no-startup-id ~/.scripts/lock.sh
 exec --no-startup-id feh --bg-scale --randomize ~/.wallpapers 
 exec --no-startup-id xss-lock --transfer-sleep-lock -- lock
 exec --no-startup-id setxkbmap -model pc104 -layout us,ar -option grp:win_space_toggle
 exec --no-startup-id nm-applet
 exec --no-startup-id pasystray
+exec --no-startup-id picom
 # ------------------------------------------------------------
 
 # -------------------------------------- SYSTEM CONFIGURATIONS
 font pango: $defaultFont
 floating_modifier $win
 workspace_auto_back_and_forth no
-gaps inner 5
+gaps inner 10
+for_window [class="^.*"] border pixel 0
 # ------------------------------------------------------------
 
 # ----------------------------------------- SYSTEM KEYBINDINGS
@@ -30,21 +32,21 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -q -D pulse set Master 
 bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q -D pulse set Master 5%- unmute && pkill -RTMIN+10 i3blocks
 bindsym XF86AudioMute exec --no-startup-id amixer -q -D pulse set Master toggle  
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
-bindsym XF86MonBrightnessUp exec light -A 5
-bindsym XF86MonBrightnessDown exec light -U 5
+bindsym XF86MonBrightnessUp exec sudo brightnessctl set +5%
+bindsym XF86MonBrightnessDown exec sudo brightnessctl set 5%-
 # ------------------------------------------------------------
 
 # ------------------------------------------------ KEYBINDINGS
 bindsym $alt+F4 kill
 bindsym $win+Shift+Return exec kitty
 bindsym $win+Return exec rofi -show run 
-bindsym $win+l exec i3lock-fancy
+bindsym $win+l exec ~/.scripts/lock.sh
 
 bindsym Shift+F5 restart
 bindsym Shift+F6 exec code ~/.config
 bindsym Shift+F10 exec feh --bg-scale --randomize ~/.wallpapers
-bindsym Shift+F11 exec light -U 5
-bindsym Shift+F12 exec light -A 5
+bindsym Shift+F11 exec sudo brightnessctl set 5%-
+bindsym Shift+F12 exec sudo brightnessctl set +5%
 # ------------------------------------------------------------
 
 # ---------------------------------------------------- WINDOWS
@@ -129,7 +131,7 @@ client.urgent           $COLOR____darkBG $COLOR____darkBG $COLOR__lightTXT $COLO
 # ----------------------------------------- BAR CONFIGURATIONS
 bar {
         status_command i3blocks -c ~/.config/i3/i3blocks.conf
-        # status_command i3status
+        position top
 	colors {
 		background $COLOR____darkBG
 	    	separator #ffffff
