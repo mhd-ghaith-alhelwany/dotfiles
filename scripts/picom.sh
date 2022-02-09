@@ -5,5 +5,5 @@ if [[ ! $(command dpkg -l | grep picom) ]]; then
     ninja -C ./picom/build > /dev/null
     rm -r picom
 else
-    echo "i3-gaps already installed. skipping"
+    echo "picom already installed. skipping"
 fi
