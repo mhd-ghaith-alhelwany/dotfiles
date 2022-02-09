@@ -10,9 +10,8 @@ set $defaultFont Share Tech Mono 9
 # ------------------------------------------------------------
 
 # ------------------------------------------- STARTUP COMMANDS
-exec --no-startup-id ~/.scripts/lock.sh
 exec --no-startup-id feh --bg-scale --randomize ~/.wallpapers 
-exec --no-startup-id xss-lock --transfer-sleep-lock -- lock
+exec --no-startup-id xss-lock --transfer-sleep-lock -- ~/.scripts/lock.sh
 exec --no-startup-id setxkbmap -model pc104 -layout us,ar -option grp:win_space_toggle
 exec --no-startup-id nm-applet
 exec --no-startup-id pasystray
