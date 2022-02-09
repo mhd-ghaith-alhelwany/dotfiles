@@ -1,7 +1,7 @@
 echo "updating package list"
 sudo apt-get update > /dev/null
 
-apt_packages=( feh xss-lock rofi kitty fonts-font-awesome light i3blocks thunar blueman lxappearance pasystray code brightnessctl telegram-desktop )
+apt_packages=( feh xss-lock rofi kitty fonts-font-awesome light i3blocks thunar blueman lxappearance pasystray code brightnessctl telegram-desktop qbittorrent )
 for i in "${apt_packages[@]}"
 do
     if [[ $(command dpkg -l | grep "$i ") ]]; then
