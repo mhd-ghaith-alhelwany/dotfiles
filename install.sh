@@ -7,4 +7,5 @@
 ./scripts/remove.sh
 ./scripts/upgrade.sh
 ./scripts/configure.sh
+./scripts/bash_append.sh
 ./scripts/picom.sh
