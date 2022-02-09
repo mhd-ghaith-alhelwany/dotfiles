@@ -4,7 +4,7 @@ sudo apt-get update > /dev/null
 apt_packages=( feh xss-lock rofi kitty fonts-font-awesome light i3blocks thunar blueman lxappearance pasystray code brightnessctl telegram-desktop )
 for i in "${apt_packages[@]}"
 do
-    if [[ $(command dpkg -l | grep $i) ]]; then
+    if [[ $(command dpkg -l | grep "$i ") ]]; then
         echo "$i was found. skipping"
     else
         echo "installing $i"
