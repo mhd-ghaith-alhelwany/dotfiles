@@ -1,0 +1,4 @@
+Add powerlevel10k with theme
+Configure Kitty (font & transparency)
+Change I3-Bar
+Resizable Gap
