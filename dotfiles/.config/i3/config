@@ -1,7 +1,7 @@
 # -------------------------------------------------- KEYS
 set $win Mod4
 set $alt Mod1
-set $shift Shift
+set $shift $shift
 # ------------------------------------------------------------
 
 # -------------------------------------------------- VARIABLES
@@ -37,15 +37,17 @@ bindsym XF86MonBrightnessDown exec sudo brightnessctl set 5%-
 
 # ------------------------------------------------ KEYBINDINGS
 bindsym $alt+F4 kill
-bindsym $win+Shift+Return exec kitty
+bindsym $win+$shift+Return exec kitty
 bindsym $win+Return exec rofi -show run 
 bindsym $win+l exec ~/.scripts/lock.sh
 
-bindsym Shift+F5 restart
-bindsym Shift+F6 exec code ~/.config
-bindsym Shift+F10 exec feh --bg-scale --randomize ~/.wallpapers
-bindsym Shift+F11 exec sudo brightnessctl set 5%-
-bindsym Shift+F12 exec sudo brightnessctl set +5%
+bindsym $win+F5 restart
+bindsym $shift+F6 exec code ~/.config
+bindsym $shift+F10 exec feh --bg-scale --randomize ~/.wallpapers
+bindsym $shift+F11 exec sudo brightnessctl set 5%-
+bindsym $shift+F12 exec sudo brightnessctl set +5%
+bindsym $win+F11 exec --no-startup-id amixer -q -D pulse set Master 5%- unmute && pkill -RTMIN+10 i3blocks
+bindsym $win+F12 exec --no-startup-id amixer -q -D pulse set Master 5%+ unmute && pkill -RTMIN+10 i3blocks
 # ------------------------------------------------------------
 
 # ---------------------------------------------------- WINDOWS
@@ -53,10 +55,10 @@ bindsym $win+Left focus left
 bindsym $win+Down focus down
 bindsym $win+Up focus up
 bindsym $win+Right focus right
-bindsym $win+Shift+Left move left
-bindsym $win+Shift+Down move down
-bindsym $win+Shift+Up move up
-bindsym $win+Shift+Right move right
+bindsym $win+$shift+Left move left
+bindsym $win+$shift+Down move down
+bindsym $win+$shift+Up move up
+bindsym $win+$shift+Right move right
 
 bindsym $win+h split h
 bindsym $win+v split v
@@ -88,27 +90,23 @@ bindsym $win+7 workspace $ws7
 bindsym $win+8 workspace $ws8
 bindsym $win+9 workspace $ws9
 
-bindsym $win+Shift+1 move container to workspace $ws1
-bindsym $win+Shift+2 move container to workspace $ws2
-bindsym $win+Shift+3 move container to workspace $ws3
-bindsym $win+Shift+4 move container to workspace $ws4
-bindsym $win+Shift+5 move container to workspace $ws5
-bindsym $win+Shift+6 move container to workspace $ws6
-bindsym $win+Shift+7 move container to workspace $ws7
-bindsym $win+Shift+8 move container to workspace $ws8
-bindsym $win+Shift+9 move container to workspace $ws9
+bindsym $win+$shift+1 move container to workspace $ws1
+bindsym $win+$shift+2 move container to workspace $ws2
+bindsym $win+$shift+3 move container to workspace $ws3
+bindsym $win+$shift+4 move container to workspace $ws4
+bindsym $win+$shift+5 move container to workspace $ws5
+bindsym $win+$shift+6 move container to workspace $ws6
+bindsym $win+$shift+7 move container to workspace $ws7
+bindsym $win+$shift+8 move container to workspace $ws8
+bindsym $win+$shift+9 move container to workspace $ws9
 
 # ------------------------------------------------------------
 
 # --------------------------------------------- WORKSPACE KEYS
 bindsym $win+Tab workspace prev 
 bindsym $alt+Tab workspace next
-bindsym $win+Shift+Tab move container to workspace prev
-bindsym $alt+Shift+Tab move container to workspace next
-
-# bindsym $win+n exec newworkspace
-# bindsym $win+Shift+n exec movetonewworkspace
-# bindsym $alt+Shift+n exec movetonewworkspace change
+bindsym $win+$shift+Tab move container to workspace prev
+bindsym $alt+$shift+Tab move container to workspace next
 # ------------------------------------------------------------
         
 set $COLOR___lightBG #607d8b
