@@ -1,0 +1,1 @@
+alias extract="~/.scripts/extract.sh"
