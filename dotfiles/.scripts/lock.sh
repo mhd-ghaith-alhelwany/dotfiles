@@ -1,5 +1,3 @@
-#!/usr/bin/bash
-
 icon="$HOME/.icons/lock.png"
 tmpbg='/tmp/screen.png'
 
