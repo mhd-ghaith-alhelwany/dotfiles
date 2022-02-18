@@ -7,6 +7,7 @@ sudo cp dotfiles/.scripts $HOME -r
 sudo cp dotfiles/.aliases $HOME
 sudo cp dotfiles/.functions $HOME
 sudo cp dotfiles/.p10k.zsh $HOME
+sudo cp dotfiles/.zshrc $HOME
 
 sudo chown $USER $HOME -R
 sudo chgrp $USER $HOME -R

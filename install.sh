@@ -4,8 +4,7 @@
 ./scripts/vscode.sh
 ./scripts/install.sh
 ./scripts/chrome.sh
-./scripts/remove.sh
 ./scripts/upgrade.sh
-./scripts/configure.sh
-./scripts/append.sh
+./scripts/zsh.sh
 ./scripts/picom.sh
+./scripts/configure.sh
