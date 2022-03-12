@@ -5,6 +5,6 @@ do
         echo "$i was found. skipping"
     else
         echo "installing $i"
-        sudo apt-get install "$i" -y > /dev/null
+        sudo apt-get install "$i" -y
     fi
 done
