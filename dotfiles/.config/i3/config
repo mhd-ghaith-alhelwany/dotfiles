@@ -16,7 +16,7 @@ exec --no-startup-id setxkbmap -model pc104 -layout us,ar -option grp:win_space_
 exec --no-startup-id nm-applet
 exec --no-startup-id pasystray
 exec --no-startup-id picom
-exec --no-startup-id motrix
+exec --no-startup-id blueman-applet
 # ------------------------------------------------------------
 
 # -------------------------------------- SYSTEM CONFIGURATIONS
@@ -70,6 +70,8 @@ bindsym $win+t layout tabbed
 bindsym $win+s layout stacking
 bindsym $win+e layout toggle split
 bindsym $win+f fullscreen toggle
+bindsym $win+$shift+s exec --no-startup-id gnome-screenshot
+
 # ------------------------------------------------------------
 
 # ------------------------------------------------- WORKSPACES
