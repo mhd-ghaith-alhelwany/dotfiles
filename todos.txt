@@ -1,3 +1,4 @@
 Change I3-Bar
 Resizable Gap
 Upgrades Button
+unrar
